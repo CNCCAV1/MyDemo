@@ -8,31 +8,50 @@
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
         <local:ColorConvert x:Key="ColorConvert"></local:ColorConvert>
+        <Storyboard x:Key="OnLoaded1">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="border">
+                <EasingDoubleKeyFrame KeyTime="0" Value="97"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="100"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="border">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Canvas.Top)" Storyboard.TargetName="border">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-100"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
     </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="button">
+            <BeginStoryboard Storyboard="{StaticResource OnLoaded1}"/>
+        </EventTrigger>
+    </Window.Triggers>
     <Grid>
         <StackPanel>
-            <TextBlock Text="{Binding Title}"></TextBlock>
+            <TextBlock Text="{Binding Title}"/>
             <StackPanel Orientation="Horizontal">
                 <Label Width="42">红 (R)</Label>
-                <Slider x:Name="slider_R" Minimum="0" Maximum="255" Width="255" Value="{Binding ColorR}"></Slider>
-                <TextBox Width="40" Text="{Binding ElementName=slider_R,Path=Value,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <Slider x:Name="slider_R" Minimum="0" Maximum="255" Width="255" Value="{Binding ColorR}"/>
+                <TextBox Width="40" Text="{Binding ElementName=slider_R,Path=Value,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Width="42">绿 (G)</Label>
-                <Slider x:Name="slider_G" Minimum="0" Maximum="255" Width="255" Value="{Binding ColorG}"></Slider>
-                <TextBox Width="40" Text="{Binding ElementName=slider_G,Path=Value,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <Slider x:Name="slider_G" Minimum="0" Maximum="255" Width="255" Value="{Binding ColorG}"/>
+                <TextBox Width="40" Text="{Binding ElementName=slider_G,Path=Value,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Width="42">蓝 (B)</Label>
-                <Slider x:Name="slider_B" Minimum="0" Maximum="255" Width="255" Value="{Binding ColorB}"></Slider>
-                <TextBox Width="40" Text="{Binding ElementName=slider_B,Path=Value,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <Slider x:Name="slider_B" Minimum="0" Maximum="255" Width="255" Value="{Binding ColorB}"/>
+                <TextBox Width="40" Text="{Binding ElementName=slider_B,Path=Value,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Width="42">Alpha</Label>
-                <Slider x:Name="slider_A" Minimum="0" Maximum="255" Width="255" Value="{Binding ColorA}"></Slider>
-                <TextBox Width="40" Text="{Binding ElementName=slider_A,Path=Value,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <Slider x:Name="slider_A" Minimum="0" Maximum="255" Width="255" Value="{Binding ColorA}"/>
+                <TextBox Width="40" Text="{Binding ElementName=slider_A,Path=Value,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
             </StackPanel>
             <TextBlock Width="40" Height="40">
@@ -45,6 +64,33 @@
                     </MultiBinding>
                 </TextBlock.Background>
             </TextBlock>
+            <Canvas ClipToBounds="True" Height="200">
+                <Border x:Name="border" Width="100" Canvas.Top="-100" Height="100" Background="Red"/>
+                <Button x:Name="button" Canvas.Left="178" Canvas.Top="24" Height="40" Width="40"/>
+                <Path Data="M0,0 L60,60 L120,0 A20,60 0 0 0 60,60 A20,60 0 0 0 120,0 H180" Stroke="Red" Canvas.Right="0" Canvas.Bottom="0"/>
+                <TreeView>
+                    <TreeViewItem Header="123" >
+                        <TreeViewItem Header="222">
+                            <TreeViewItem Header="33"></TreeViewItem>
+                            <TreeViewItem Header="33"></TreeViewItem>
+                            <TreeViewItem Header="33"></TreeViewItem>
+                        </TreeViewItem>
+                        <TreeViewItem Header="222"></TreeViewItem>
+                        <TreeViewItem Header="222"></TreeViewItem>
+                        <TreeViewItem Header="222"></TreeViewItem>
+                        <TreeViewItem Header="222"></TreeViewItem>
+                    </TreeViewItem>
+                    <TreeViewItem Header="123">123</TreeViewItem>
+                    <TreeViewItem Header="123">123</TreeViewItem>
+                    <TreeViewItem Header="123">123</TreeViewItem>
+                </TreeView>
+                <ProgressBar Width="100" Height="100" Canvas.Left="252" Canvas.Top="75" Minimum="20">
+                    
+                </ProgressBar>
+                <AdornerDecorator Width="100" Height="100">
+                    
+                </AdornerDecorator>
+            </Canvas>
         </StackPanel>
 
     </Grid>

@@ -27,6 +27,11 @@ namespace WpfApp4.ViewModel
             if (IsInDesignMode)
             {
                 // Code runs in Blend --> create design time data.
+                ColorA = 100;
+                colorR = 100;
+                colorG = 100;
+                colorB = 100;
+
                 Title = "≤‚ ‘";
             }
             else
