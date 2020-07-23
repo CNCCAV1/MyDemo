@@ -3,31 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfApp4" 
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:local="clr-namespace:WpfApp4"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         mc:Ignorable="d" DataContext="{Binding Source={StaticResource Locator},Path=Main}"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
         <local:ColorConvert x:Key="ColorConvert"></local:ColorConvert>
-        <Storyboard x:Key="OnLoaded1">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="border">
-                <EasingDoubleKeyFrame KeyTime="0" Value="97"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="100"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="border">
-                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Canvas.Top)" Storyboard.TargetName="border">
-                <EasingDoubleKeyFrame KeyTime="0" Value="-100"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
-            </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
     </Window.Resources>
-    <Window.Triggers>
-        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="button">
-            <BeginStoryboard Storyboard="{StaticResource OnLoaded1}"/>
-        </EventTrigger>
-    </Window.Triggers>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadCommand}" CommandParameter="{Binding ElementName=box}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="PreviewKeyDown">
+            <i:InvokeCommandAction Command="{Binding KeyCommand}" ></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid>
         <StackPanel>
             <TextBlock Text="{Binding Title}"/>
@@ -64,34 +55,31 @@
                     </MultiBinding>
                 </TextBlock.Background>
             </TextBlock>
-            <Canvas ClipToBounds="True" Height="200">
-                <Border x:Name="border" Width="100" Canvas.Top="-100" Height="100" Background="Red"/>
-                <Button x:Name="button" Canvas.Left="178" Canvas.Top="24" Height="40" Width="40"/>
-                <Path Data="M0,0 L60,60 L120,0 A20,60 0 0 0 60,60 A20,60 0 0 0 120,0 H180" Stroke="Red" Canvas.Right="0" Canvas.Bottom="0"/>
-                <TreeView>
-                    <TreeViewItem Header="123" >
-                        <TreeViewItem Header="222">
-                            <TreeViewItem Header="33"></TreeViewItem>
-                            <TreeViewItem Header="33"></TreeViewItem>
-                            <TreeViewItem Header="33"></TreeViewItem>
-                        </TreeViewItem>
-                        <TreeViewItem Header="222"></TreeViewItem>
-                        <TreeViewItem Header="222"></TreeViewItem>
-                        <TreeViewItem Header="222"></TreeViewItem>
-                        <TreeViewItem Header="222"></TreeViewItem>
-                    </TreeViewItem>
-                    <TreeViewItem Header="123">123</TreeViewItem>
-                    <TreeViewItem Header="123">123</TreeViewItem>
-                    <TreeViewItem Header="123">123</TreeViewItem>
-                </TreeView>
-                <ProgressBar Width="100" Height="100" Canvas.Left="252" Canvas.Top="75" Minimum="20">
-                    
-                </ProgressBar>
-                <AdornerDecorator Width="100" Height="100">
-                    
-                </AdornerDecorator>
-            </Canvas>
+            <Slider Width="200" Minimum="0" Maximum="100" Value="{Binding SliderValue}"></Slider>
+            <ToggleButton Width="200" Height="60">
+                <ToggleButton.Style>
+                    <Style TargetType="ToggleButton">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ToggleButton">
+                                    <Border Background="{TemplateBinding Background}"></Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsChecked" Value="True">
+                                            <Setter Property="Background" >
+                                                <Setter.Value>
+                                                    <ImageBrush ImageSource="Tb.ico"></ImageBrush>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ToggleButton.Style>
+            </ToggleButton>
         </StackPanel>
+        <Image gif:ImageBehavior.AnimatedSource="/Images/cardID.gif"></Image>
 
     </Grid>
 </Window>

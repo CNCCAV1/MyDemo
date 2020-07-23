@@ -3,77 +3,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d"
+        mc:Ignorable="d" Loaded="Window_Loaded"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:dp="clr-namespace:MyDemo"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Margin="10" Visibility="Visible" MouseMove="Button_MouseEnter" 
-                Width="300 " Height="300" dp:DpClass.MyThickness="0" dp:DpClass.MyR="0" ToolTip="123">
-            <Button.RenderTransformOrigin>
-                <Point X="0.5" Y="0.5"></Point>
-            </Button.RenderTransformOrigin>
-            <Button.Style>
-                <Style TargetType="Button">
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="Button">
-                                <ControlTemplate.Resources>
-                                    <Storyboard x:Key="Storyboard1">
-                                        <!--<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="bor">
-                                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.6"/>
-                                            <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0"/>
-                                        </DoubleAnimationUsingKeyFrames>-->
-                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="bor">
-                                            <EasingDoubleKeyFrame KeyTime="0" Value="0.02"/>
-                                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.02"/>
-                                            <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="2"/>
-                                            <EasingDoubleKeyFrame KeyTime="0:0:1.7" Value="0.02"/>
-                                        </DoubleAnimationUsingKeyFrames>
-                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="bor">
-                                            <EasingDoubleKeyFrame KeyTime="0" Value="0.02"/>
-                                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.02"/>
-                                            <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="2"/>
-                                            <EasingDoubleKeyFrame KeyTime="0:0:1.7" Value="0.02"/>
-                                        </DoubleAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </ControlTemplate.Resources>
-                                <Grid ClipToBounds="True"
-                                      >
-                                    <Border Background="Red"></Border>
-                                    <Border Width="{TemplateBinding MaxWidth}" Height="{TemplateBinding MaxHeight}">
-
-                                    </Border>
-                                    <Ellipse x:Name="bor" 
-                                             Width="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(dp:DpClass.MyR)}" 
-                                             Height="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(dp:DpClass.MyR)}" 
-                                             Margin="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(dp:DpClass.MyThickness)}"
-                                             Fill="{TemplateBinding Background}" Opacity="1" Visibility="Hidden" RenderTransformOrigin="0.5,0.5">
-                                        <Ellipse.RenderTransform>
-                                            <TransformGroup>
-                                                <ScaleTransform ScaleX="0.02" ScaleY="0.02"/>
-                                                <SkewTransform/>
-                                                <RotateTransform/>
-                                                <TranslateTransform/>
-                                            </TransformGroup>
-                                        </Ellipse.RenderTransform>
-                                    </Ellipse>
-                                </Grid>
-                                <ControlTemplate.Triggers>
-                                    <Trigger Property="IsPressed" Value="True">
-                                        <Setter Property="Visibility" TargetName="bor"  Value="Visible" />
-                                        <Trigger.EnterActions>
-                                            <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
-                                        </Trigger.EnterActions>
-                                    </Trigger>
-                                </ControlTemplate.Triggers>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </Button.Style>
-        </Button>
-        <Button Width="120" Height="40" VerticalAlignment="Bottom">
-
-        </Button>
+        <StackPanel VerticalAlignment="Center">
+            <TextBox x:Name="txt" Width="200" Height="40"></TextBox>
+            <Button Width="200" Height="60" Click="Button_Click">播放</Button>
+        </StackPanel>
     </Grid>
 </Window>
