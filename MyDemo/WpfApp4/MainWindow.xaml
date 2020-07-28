@@ -10,6 +10,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
         <local:ColorConvert x:Key="ColorConvert"></local:ColorConvert>
+        <FontFamily x:Key="xx">/WpfApp4;component/font/禹卫书法行书简体.ttf #禹卫书法行书简体</FontFamily>
     </Window.Resources>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
@@ -79,7 +80,6 @@
                 </ToggleButton.Style>
             </ToggleButton>
         </StackPanel>
-        <Image gif:ImageBehavior.AnimatedSource="/Images/cardID.gif"></Image>
-
+        <TextBlock FontFamily="{StaticResource xx}" FontSize="50">行书</TextBlock>
     </Grid>
 </Window>

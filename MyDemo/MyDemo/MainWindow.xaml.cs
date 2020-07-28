@@ -28,11 +28,12 @@ namespace MyDemo
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            var data = TTSHelper.jTTS_Play("测试",0);
 
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
+            var data = TTSHelper.jTTS_Init("", "");
         }
     }
 }

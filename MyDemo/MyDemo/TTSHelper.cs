@@ -10,7 +10,15 @@ namespace MyDemo
     {
         const string dllpath = "DLL\\jTTS_ML.dll";
         [DllImport(dllpath)]
-        public static extern void Load();
+        public static extern int jTTS_Play(string str,int intpar);
+        [DllImport(dllpath)]
+        public static extern void jTTS_End();
+        [DllImport(dllpath)]
+        public static extern void jTTS_Set();
+        [DllImport(dllpath)]
+        public static extern int jTTS_Init(string a,string b);
+        [DllImport(dllpath)]
+        public static extern void jTTS_GetVoiceCount();
 
     }
 }
