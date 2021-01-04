@@ -6,11 +6,36 @@
         mc:Ignorable="d" Loaded="Window_Loaded"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:dp="clr-namespace:MyDemo"
+        xmlns:user="clr-namespace:MyDemo.UserControl"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style x:Key="ListViewItemStyle1" TargetType="{x:Type ListViewItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListViewItem}">
+                        <CheckBox/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <ItemsPanelTemplate x:Key="ItemsPanelTemplate1">
+            <WrapPanel/>
+        </ItemsPanelTemplate>
+    </Window.Resources>
     <Grid>
-        <StackPanel VerticalAlignment="Center">
+        <Button x:Name="btn"></Button>
+        <!--<user:MyControl ></user:MyControl>-->
+        <!--<StackPanel VerticalAlignment="Center" Visibility="Visible">
             <TextBox x:Name="txt" Width="200" Height="40"></TextBox>
             <Button Width="200" Height="60" Click="Button_Click">播放</Button>
+            <CheckBox Content="123" x:Name="cbox"></CheckBox>
         </StackPanel>
+        <ContentControl x:Name="cont"></ContentControl>-->
+        <!--<ListView ItemContainerStyle="{DynamicResource ListViewItemStyle1}" ItemsPanel="{DynamicResource ItemsPanelTemplate1}" Width="50">
+            <ListViewItem Content="ListViewItem"/>
+            <ListViewItem Content="ListViewItem"/>
+            <ListViewItem Content="ListViewItem"/>
+            <ListViewItem Content="ListViewItem"/>
+        </ListView>-->
     </Grid>
 </Window>

@@ -15,6 +15,12 @@ namespace MyDemo
         public static extern void jTTS_End();
         [DllImport(dllpath)]
         public static extern void jTTS_Set();
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         [DllImport(dllpath)]
         public static extern int jTTS_Init(string a,string b);
         [DllImport(dllpath)]

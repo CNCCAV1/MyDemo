@@ -38,6 +38,13 @@ namespace WpfApp4.ViewModel
                 colorB = 100;
 
                 Title = "²âÊÔ";
+                Btn = new Button()
+                {
+                    Width = 200,
+                    Height = 80,
+                    Background = Brushes.Red,
+                    Content = "°¢Å£"
+                };
             }
             else
             {
@@ -125,6 +132,14 @@ namespace WpfApp4.ViewModel
         {
             get { return cardId; }
             set { cardId = value; RaisePropertyChanged(() => CardID); }
+        }
+
+        private Button btn;
+
+        public Button Btn
+        {
+            get { return btn; }
+            set { btn = value; RaisePropertyChanged(() => Btn); }
         }
 
         #region ÃüÁî

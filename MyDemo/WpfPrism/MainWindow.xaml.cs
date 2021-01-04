@@ -12,10 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WpfApp4.Models;
-using WpfApp4.Helper;
 
-namespace WpfApp4
+namespace WpfPrism
 {
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
@@ -25,11 +23,6 @@ namespace WpfApp4
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
-        {
-            DepartmentInfo info = HttpHelper.GetMethodToObject<DepartmentInfo>("http://127.0.0.1:90/PartService/DepartmentService/Get");
         }
     }
 }

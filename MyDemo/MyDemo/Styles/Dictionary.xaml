@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:user="clr-namespace:MyDemo.UserControl"
+                    xmlns:local="clr-namespace:MyDemo.Styles">
+    <Style TargetType="user:MyControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="user:MyControl">
+                    <Button Width="100" Height="100"></Button>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

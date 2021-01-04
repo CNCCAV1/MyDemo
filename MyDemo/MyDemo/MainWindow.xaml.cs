@@ -28,12 +28,19 @@ namespace MyDemo
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var data = TTSHelper.jTTS_Play("测试",0);
+            var data = TTSHelper.jTTS_Play("已完成预约，请带好您的证件和票据", 0);
 
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var data = TTSHelper.jTTS_Init("", "");
+            TextBox box = new TextBox();
+            //cbox.IsChecked = true;
+        }
+
+        private void btn_Click(object sender, RoutedEventArgs e)
+        {
+            btn.Focus();
         }
     }
 }
