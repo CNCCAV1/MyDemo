@@ -90,6 +90,8 @@
     <Compile Include="Conver.cs" />
     <Compile Include="Helper\HttpHelper.cs" />
     <Compile Include="Models\DepartmentInfo.cs" />
+    <Compile Include="Models\IValidationExceptionHandler.cs" />
+    <Compile Include="Models\ValidationExceptionBehavior.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="MainWindow.xaml">

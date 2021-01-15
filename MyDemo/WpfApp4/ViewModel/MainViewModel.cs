@@ -38,10 +38,9 @@ namespace WpfApp4.ViewModel
                 colorB = 100;
 
                 Title = "测试";
+                Name = "";
                 Btn = new Button()
                 {
-                    Width = 200,
-                    Height = 80,
                     Background = Brushes.Red,
                     Content = "阿牛"
                 };
@@ -125,7 +124,6 @@ namespace WpfApp4.ViewModel
             get { return bColor; }
             set { bColor = value; RaisePropertyChanged(() => BColor); }
         }
-        #endregion
         private string cardId;
 
         public string CardID
@@ -141,6 +139,28 @@ namespace WpfApp4.ViewModel
             get { return btn; }
             set { btn = value; RaisePropertyChanged(() => Btn); }
         }
+        private string name;
+
+        public string Name
+        {
+            get { return name; }
+            set 
+            {
+                if (Equals(value, name)) return;
+                if(value == "")
+                {
+                    //return new ValidationRule(false, "");
+                    throw new ArgumentException("数值不能为空");
+                }
+                else
+                {
+                    name = value;
+                    RaisePropertyChanged(() => Name);
+                }           
+            }
+        }
+
+        #endregion
 
         #region 命令
         private RelayCommand<TextBox> loadCommand;
